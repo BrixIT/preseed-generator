@@ -1,0 +1,26 @@
+{
+  "name": "preseed-builder",
+  "authors": [
+    "Martijn Braam <martijn@brixit.nl>"
+  ],
+  "description": "Debian preseed file generator",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "angularjs#~1.4.8",
+    "angular-strap": "~2.3.6",
+    "angular-animate": "~1.4.8",
+    "angular-highlightjs": "~0.5.1",
+    "highlightjs": "~9.0.0"
+  }
+}

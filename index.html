@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="preseed">
+<head>
+    <meta charset="UTF-8">
+    <title>Preseed builder</title>
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/highlightjs/highlight.pack.js"></script>
+    <script src="vendor/angular-animate/angular-animate.min.js"></script>
+    <script src="vendor/angular-strap/dist/angular-strap.min.js"></script>
+    <script src="vendor/angular-strap/dist/angular-strap.tpl.min.js"></script>
+    <script src="vendor/angular-highlightjs/angular-highlightjs.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/hljs-preseed.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller="preseedController">
+<h1>Debian preseed file generator</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Settings</div>
+                <div class="panel-body">
+                    <h2>Locale settings</h2>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="locale" class="col-sm-2 control-label">Locale</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="locale" class="form-control" ng-model="preseedData.locale.locale"
+                                       bs-options="value as value for value in selectOptions.locales"
+                                       placeholder="Enter a locale"
+                                       data-limit="12"
+                                       bs-tooltip="{'title':'The base locale for the system. In most cases just `en_US`'}"
+                                       bs-typeahead>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="charmap" class="col-sm-2 control-label">Character map</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="charmap" class="form-control"
+                                       ng-model="preseedData.locale.charmap"
+                                       bs-options="value as value for value in selectOptions.charmaps"
+                                       placeholder="Enter a character map"
+                                       data-limit="12"
+                                       bs-tooltip="{'title':'The default encoding used in the system. Should probably be `UTF-8`'}"
+                                       bs-typeahead>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="country" class="col-sm-2 control-label">Country</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="country" class="form-control"
+                                       ng-model="preseedData.locale.country"
+                                       bs-options="country as country.name for country in selectOptions.countrycodes"
+                                       placeholder="Enter a country"
+                                       data-limit="12"
+                                       bs-typeahead>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="language" class="col-sm-2 control-label">Language</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="language" class="form-control"
+                                       ng-model="preseedData.locale.language"
+                                       bs-options="value as value for value in selectOptions.languages"
+                                       placeholder="Enter a locale"
+                                       data-limit="12"
+                                       bs-tooltip="{'title':'Enter the two letter code for your language here'}"
+                                       bs-typeahead>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Keyboard settings</h2>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="keyboardlayout" class="col-sm-2 control-label">Layout</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="keyboardlayout" class="form-control"
+                                       ng-model="preseedData.keyboard.keymap"
+                                       bs-options="value as value for value in selectOptions.keymaps"
+                                       placeholder="Enter a locale"
+                                       data-limit="12"
+                                       bs-tooltip="{'title':'The keyboard layout, is `us` by default but can also be a exotical layout like `dvorak`'}"
+                                       bs-typeahead>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Preseed file</div>
+                <div hljs hljs-include="'partials/preseed/wheezy.html'" hljs-interpolate="true"
+                     hljs-language="preseed"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
